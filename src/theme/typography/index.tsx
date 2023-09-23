@@ -24,3 +24,19 @@ export const RegularText: FC<CommonTextProps> = ({
     </Text>
   );
 };
+
+export const BoldText: FC<CommonTextProps> = ({
+  children,
+  color = Colors.foretext,
+  size = 14,
+  style,
+  ...props
+}) => {
+  return (
+    <Text
+      style={[{color, fontSize: ptp(size), fontFamily: Fonts.bold}, style]}
+      {...props}>
+      {children}
+    </Text>
+  );
+};

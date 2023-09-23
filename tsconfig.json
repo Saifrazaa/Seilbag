@@ -6,6 +6,7 @@
       "@assets/*": ["src/assets/*"],
       "@config/*": ["src/config/*"],
       "@components/*": ["src/components/*"],
+      "@data/*": ["src/data/*"],
       "@framework/*": ["src/framework"],
       "@contexts/*": ["src/contexts/*"],
       "@navigation/*": ["src/navigation/*"],
