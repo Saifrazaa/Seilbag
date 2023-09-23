@@ -1,5 +1,5 @@
 import {StyleSheet, TouchableOpacity} from 'react-native';
-import React from 'react';
+import React, {type FC, useMemo} from 'react';
 
 import Layout from '@components/layout';
 import Header from '@components/header';
@@ -8,9 +8,11 @@ import {ptp} from '@utils/helper';
 import {SPACE_X} from '@utils/variables';
 import BatteryIndicatorIcon from '@assets/media/battery-indicator.svg';
 import BrightnessIcon from '@assets/media/brightness.svg';
-import LampIcon from '@assets/media/lamp.svg';
-import LampWhiteIcon from '@assets/media/lamp-white.svg';
 import {Colors} from '@theme/values/colors';
+import {BoldText, RegularText} from '@theme/typography';
+import {useUI} from '@contexts/ui.context';
+import IconButton from '@components/buttons/icon-button';
+import {HomeScreenProps} from '@utils/@types';
 import PowerIcon from '@assets/media/power.svg';
 import PowerWhiteIcon from '@assets/media/power-white.svg';
 import TriangleIcon from '@assets/media/triangle.svg';
@@ -21,44 +23,52 @@ import ThreeTriangleIcon from '@assets/media/three-triangle.svg';
 import ThreeTriangleWhiteIcon from '@assets/media/three-triangle-white.svg';
 import LeftRightIcon from '@assets/media/left-right-arrow.svg';
 import LeftRightWhiteIcon from '@assets/media/left-right-arrow-white.svg';
-import {BoldText, RegularText} from '@theme/typography';
-import {useUI} from '@contexts/ui.context';
+import LampIcon from '@assets/media/lamp.svg';
+import LampWhiteIcon from '@assets/media/lamp-white.svg';
+import {ControlType} from '@utils/@types';
 
-const CONTROLS = [
-  {
-    id: 0,
-    label: 'LED ON/OFF',
-    icon: {off: PowerIcon, on: PowerWhiteIcon},
-  },
-  {
-    id: 1,
-    label: 'Emergency',
-    icon: {off: TriangleIcon, on: TriangleYellowIcon},
-  },
-  {
-    id: 2,
-    label: 'Color Change',
-    icon: {off: SquareIcon, on: SquareWhiteIcon},
-  },
-  {
-    id: 3,
-    label: 'Brightness',
-    icon: {off: LampIcon, on: LampWhiteIcon},
-  },
-  {
-    id: 4,
-    label: 'Function',
-    icon: {off: ThreeTriangleIcon, on: ThreeTriangleWhiteIcon},
-  },
-  {
-    id: 5,
-    label: 'Direction',
-    icon: {off: LeftRightIcon, on: LeftRightWhiteIcon},
-  },
-];
+type ControlProps = HomeScreenProps<'control'>;
 
-const Control = () => {
+const Control: FC<ControlProps> = ({navigation}) => {
   const {connected, toggleConnected} = useUI();
+
+  const CONTROLS: Array<ControlType> = useMemo(
+    () => [
+      {
+        id: 0,
+        label: 'LED ON/OFF',
+        icon: {off: PowerIcon, on: PowerWhiteIcon},
+      },
+      {
+        id: 1,
+        label: 'Emergency',
+        icon: {off: TriangleIcon, on: TriangleYellowIcon},
+      },
+      {
+        id: 2,
+        label: 'Color Change',
+        icon: {off: SquareIcon, on: SquareWhiteIcon},
+        onPress: () => navigation.navigate('color-change'),
+      },
+      {
+        id: 3,
+        label: 'Brightness',
+        icon: {off: LampIcon, on: LampWhiteIcon},
+      },
+      {
+        id: 4,
+        label: 'Function',
+        icon: {off: ThreeTriangleIcon, on: ThreeTriangleWhiteIcon},
+        onPress: () => navigation.navigate('functions'),
+      },
+      {
+        id: 5,
+        label: 'Direction',
+        icon: {off: LeftRightIcon, on: LeftRightWhiteIcon},
+      },
+    ],
+    [],
+  );
 
   return (
     <Layout>
@@ -88,10 +98,12 @@ const Control = () => {
                   70
                 </BoldText>
               )}
-              <BrightnessIcon
-                width={ptp(71.04 * 0.4)}
-                height={ptp(71.04 * 0.4)}
-              />
+              <IconButton onPress={toggleConnected}>
+                <BrightnessIcon
+                  width={ptp(71.04 * 0.4)}
+                  height={ptp(71.04 * 0.4)}
+                />
+              </IconButton>
             </Box>
           </Box>
           <Box style={styles.indicator}>
@@ -157,8 +169,9 @@ const Control = () => {
                 },
               ]}>
               <TouchableOpacity
+                onPress={control.onPress}
                 style={{width: '100%', height: '100%'}}
-                onPress={toggleConnected}>
+                disabled={!connected}>
                 <Box centered justified style={{width: '100%', height: '100%'}}>
                   {connected ? (
                     <control.icon.on width={ptp(56)} height={ptp(56)} />
