@@ -1,5 +1,6 @@
-import type {ColorValue} from 'react-native';
-
-export const Colors: Record<string, ColorValue> = {
+export const Colors = {
+  background: '#040000',
   foretext: '#777777',
+  transparent: 'transparent',
+  fade: '#999999',
 };
