@@ -21,4 +21,14 @@ export type AppDrawerParamList = {
 
 export type HomeStackParamList = {
   control: undefined;
+  devices: undefined;
+  brightness: undefined;
+  functions: undefined;
+  'color-change': undefined;
 };
+
+export type HomeScreenProps<T extends keyof HomeStackParamList> =
+  CompositeScreenProps<
+    NativeStackScreenProps<HomeStackParamList, T>,
+    DrawerScreenProps<AppDrawerParamList>
+  >;
