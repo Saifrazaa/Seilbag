@@ -3,4 +3,6 @@ export const Colors = {
   foretext: '#777777',
   transparent: 'transparent',
   fade: '#999999',
+  dim: '#494F64',
+  white: '#ffffff',
 };

@@ -4,6 +4,7 @@ import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import Router from '@navigation/index';
 import {Colors} from '@theme/values/colors';
+import {ManagedUIContext} from '@contexts/ui.context';
 
 function App(): JSX.Element {
   return (
@@ -13,9 +14,11 @@ function App(): JSX.Element {
         barStyle="light-content"
         backgroundColor={Colors.transparent}
       />
-      <NavigationContainer>
-        <Router />
-      </NavigationContainer>
+      <ManagedUIContext>
+        <NavigationContainer>
+          <Router />
+        </NavigationContainer>
+      </ManagedUIContext>
     </>
   );
 }
