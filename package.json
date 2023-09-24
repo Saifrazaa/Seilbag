@@ -17,6 +17,7 @@
     "@sharcoux/slider": "^7.0.5",
     "react": "18.2.0",
     "react-native": "0.72.4",
+    "react-native-anchor-point": "^1.0.6",
     "react-native-gesture-handler": "^2.13.1",
     "react-native-modal": "^13.0.1",
     "react-native-reanimated": "^3.5.4",

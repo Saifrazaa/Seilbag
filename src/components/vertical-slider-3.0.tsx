@@ -1,11 +1,10 @@
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, View} from 'react-native';
 import React, {useState} from 'react';
 import {Slider} from '@sharcoux/slider';
 import {ptp} from '@utils/helper';
 import {RegularText} from '@theme/typography';
 import Container from './container';
 import SunIcon from '@assets/media/sun.svg';
-import {Colors} from '@theme/values/colors';
 const VerticalSlider3 = () => {
   const [value, setValue] = useState<number>(100);
   return (
@@ -21,9 +20,6 @@ const VerticalSlider3 = () => {
           minimumTrackTintColor="#4582BC"
           maximumTrackTintColor="#BBBBBB"
           thumbSize={ptp(22)}
-          thumbStyle={{
-            backgroundColor: '#4582BC',
-          }}
           style={{paddingTop: ptp(8), paddingBottom: ptp(16)}}
           onValueChange={value => setValue(value)}
           CustomThumb={() => (
@@ -32,7 +28,7 @@ const VerticalSlider3 = () => {
                 width: 24,
                 height: 24,
                 borderRadius: 12,
-                backgroundColor: Colors.dim,
+                backgroundColor: '#4582BC',
               }}>
               <View style={{position: 'absolute', right: -24, top: 2}}>
                 <RegularText size={12}>{value}</RegularText>

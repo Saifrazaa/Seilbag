@@ -25,6 +25,7 @@ export type HomeStackParamList = {
   brightness: undefined;
   functions: undefined;
   'color-change': undefined;
+  directions: undefined;
 };
 
 export type HomeScreenProps<T extends keyof HomeStackParamList> =

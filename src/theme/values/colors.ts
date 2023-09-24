@@ -8,4 +8,5 @@ export const Colors = {
   white: '#ffffff',
   black: '#000000',
   secondary: '#4D4E4E',
+  warning: '#FFB000',
 };
