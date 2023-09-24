@@ -1,5 +1,5 @@
-import { FC } from "react";
-import { View, ViewProps } from "react-native";
+import {FC} from 'react';
+import {View, ViewProps} from 'react-native';
 
 interface BoxProps extends ViewProps {
   row?: boolean;
@@ -9,6 +9,7 @@ interface BoxProps extends ViewProps {
   justifiedEnd?: boolean;
   spaced?: boolean;
   end?: boolean;
+  container?: boolean;
 }
 
 export const Box: FC<BoxProps> = ({
@@ -21,32 +22,33 @@ export const Box: FC<BoxProps> = ({
   spaced,
   end,
   style,
+  container,
   ...props
 }) => {
   return (
     <View
       style={[
         {
+          width: container ? '100%' : 'auto',
           flexDirection: row
             ? reversed
-              ? "row-reverse"
-              : "row"
+              ? 'row-reverse'
+              : 'row'
             : reversed
-            ? "column-reverse"
-            : "column",
-          alignItems: centered ? "center" : end ? "flex-end" : "flex-start",
+            ? 'column-reverse'
+            : 'column',
+          alignItems: centered ? 'center' : end ? 'flex-end' : 'flex-start',
           justifyContent: justified
-            ? "center"
+            ? 'center'
             : spaced
-            ? "space-between"
+            ? 'space-between'
             : justifiedEnd
-            ? "flex-end"
-            : "flex-start",
+            ? 'flex-end'
+            : 'flex-start',
         },
         style,
       ]}
-      {...props}
-    >
+      {...props}>
       {children}
     </View>
   );

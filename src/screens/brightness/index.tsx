@@ -1,24 +1,20 @@
-import {StyleSheet, TouchableOpacity, View} from 'react-native';
-import React, {type FC, useState} from 'react';
+import {StyleSheet, View} from 'react-native';
+import React, {type FC} from 'react';
+import {useSafeAreaInsets} from 'react-native-safe-area-context';
+
 import {Colors} from '@theme/values/colors';
 import {SCREEN_HEIGHT, SCREEN_WIDTH} from '@utils/variables';
 import {Box} from '@theme/grid';
-import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import {ptp} from '@utils/helper';
 import {RegularText} from '@theme/typography';
 import PrimaryButton from '@components/buttons/primary-button';
 import {HomeScreenProps} from '@utils/@types';
-import {COLOR_ITEMS} from '@data/color-item';
+import VerticalSlider3 from '@components/vertical-slider-3.0';
 
 type BrightnessProps = HomeScreenProps<'brightness'>;
 
 const Brightness: FC<BrightnessProps> = ({navigation}) => {
   const insets = useSafeAreaInsets();
-  const [selectedColor, setSelectedColor] = useState<number>(0);
-
-  const handleSelectColor = (id: number) => () => {
-    setSelectedColor(id);
-  };
 
   return (
     <Box
@@ -32,37 +28,10 @@ const Brightness: FC<BrightnessProps> = ({navigation}) => {
       justifiedEnd>
       <View style={styles.contentContainer}>
         <Box style={styles.titleContainer}>
-          <RegularText size={16}>Color Change</RegularText>
+          <RegularText size={16}>Brightness</RegularText>
         </Box>
-        <Box row style={{flexWrap: 'wrap'}}>
-          {COLOR_ITEMS.map((color, index) => {
-            const selected = index === selectedColor;
-            return (
-              <Box
-                style={[
-                  styles.colorItem,
-                  {
-                    borderBottomWidth: index > 3 ? 1 : 0,
-                    backgroundColor: selected ? Colors.white : '#F3F3F4',
-                  },
-                ]}
-                key={index}>
-                <TouchableOpacity
-                  style={styles.colorBtnContent}
-                  onPress={handleSelectColor(index)}>
-                  <Box centered style={{width: '100%'}}>
-                    <View
-                      style={[styles.colorBox, {backgroundColor: color.color}]}
-                    />
-                    <RegularText
-                      style={{textTransform: 'uppercase', marginTop: ptp(12)}}>
-                      {color.name}
-                    </RegularText>
-                  </Box>
-                </TouchableOpacity>
-              </Box>
-            );
-          })}
+        <Box centered style={styles.sliderContainer}>
+          <VerticalSlider3 />
         </Box>
         <Box style={styles.footer} centered>
           <View style={{width: '60%'}}>
@@ -91,28 +60,12 @@ const styles = StyleSheet.create({
     maxHeight: SCREEN_HEIGHT * 0.7,
     paddingVertical: ptp(12),
   },
+  sliderContainer: {
+    height: ptp(240),
+  },
   titleContainer: {
     paddingBottom: ptp(12),
     paddingHorizontal: ptp(16),
-  },
-  colorItem: {
-    width: '25%',
-    height: ptp(124),
-    backgroundColor: '#F3F3F4',
-    borderColor: '#676868',
-    borderTopWidth: 1,
-    borderRightWidth: 1,
-  },
-  colorBtnContent: {
-    paddingTop: ptp(12),
-    width: '100%',
-    height: '100%',
-  },
-  colorBox: {
-    width: ptp(64),
-    height: ptp(64),
-    borderColor: Colors.black,
-    borderWidth: 1,
   },
   footer: {
     paddingTop: ptp(16),

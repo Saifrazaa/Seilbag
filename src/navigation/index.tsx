@@ -7,6 +7,7 @@ import Devices from '@screens/devices';
 import Brightness from '@screens/brightness';
 import ColorChange from '@screens/color-change';
 import Functions from '@screens/functions';
+import Directions from '@screens/directions';
 
 const AppDrawer = createDrawerNavigator<AppDrawerParamList>();
 const HomeStack = createNativeStackNavigator<HomeStackParamList>();
@@ -22,14 +23,17 @@ const HomeScreens = () => {
         <HomeStack.Screen name="devices" component={Devices} />
         <HomeStack.Screen name="color-change" component={ColorChange} />
         <HomeStack.Screen name="functions" component={Functions} />
+        <HomeStack.Screen name="brightness" component={Brightness} />
       </HomeStack.Group>
+      <HomeStack.Screen name="directions" component={Directions} />
     </HomeStack.Navigator>
   );
 };
 
 const DrawerScreens = () => {
   return (
-    <AppDrawer.Navigator screenOptions={{headerShown: false}}>
+    <AppDrawer.Navigator
+      screenOptions={{headerShown: false, swipeEnabled: false}}>
       <AppDrawer.Screen name="home" component={HomeScreens} />
     </AppDrawer.Navigator>
   );
