@@ -1,11 +1,5 @@
-import {
-  LayoutChangeEvent,
-  StyleSheet,
-  View,
-  PanResponder,
-  PanResponderGestureState,
-} from 'react-native';
-import React, {useState, type FC} from 'react';
+import {StyleSheet, View} from 'react-native';
+import React, {type FC} from 'react';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 
 import {Colors} from '@theme/values/colors';
@@ -15,8 +9,6 @@ import {ptp} from '@utils/helper';
 import {RegularText} from '@theme/typography';
 import PrimaryButton from '@components/buttons/primary-button';
 import {HomeScreenProps} from '@utils/@types';
-import VerticalSlider from '@components/vertical-slider';
-import VerticalSlider2 from '@components/vertical-slider-2.0';
 import VerticalSlider3 from '@components/vertical-slider-3.0';
 
 type BrightnessProps = HomeScreenProps<'brightness'>;

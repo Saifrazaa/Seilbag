@@ -8,9 +8,7 @@ interface LayoutProps extends ViewProps {}
 const Layout: FC<LayoutProps> = ({children}) => {
   const insets = useSafeAreaInsets();
   return (
-    <View style={[styles.container, {paddingTop: insets.top}]}>
-      <ScrollView>{children}</ScrollView>
-    </View>
+    <View style={[styles.container, {paddingTop: insets.top}]}>{children}</View>
   );
 };
 
