@@ -54,6 +54,7 @@ const Control: FC<ControlProps> = ({navigation}) => {
         id: 3,
         label: 'Brightness',
         icon: {off: LampIcon, on: LampWhiteIcon},
+        onPress: () => navigation.navigate('brightness'),
       },
       {
         id: 4,
