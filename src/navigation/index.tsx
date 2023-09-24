@@ -22,6 +22,7 @@ const HomeScreens = () => {
         <HomeStack.Screen name="devices" component={Devices} />
         <HomeStack.Screen name="color-change" component={ColorChange} />
         <HomeStack.Screen name="functions" component={Functions} />
+        <HomeStack.Screen name="brightness" component={Brightness} />
       </HomeStack.Group>
     </HomeStack.Navigator>
   );
