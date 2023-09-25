@@ -4,6 +4,7 @@ import type {
   NavigatorScreenParams,
 } from '@react-navigation/native';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
+import {SvgProps} from 'react-native-svg';
 
 export type {CompositeScreenProps} from '@react-navigation/native';
 export {
@@ -17,6 +18,10 @@ export type {DrawerNavigationProp} from '@react-navigation/drawer';
 
 export type AppDrawerParamList = {
   home: NavigatorScreenParams<HomeStackParamList>;
+  info: {icon: React.FC<SvgProps>};
+  website: {icon: React.FC<SvgProps>};
+  email: {icon: React.FC<SvgProps>};
+  sms: {icon: React.FC<SvgProps>};
 };
 
 export type HomeStackParamList = {
