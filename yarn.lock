@@ -1697,11 +1697,6 @@
     prompts "^2.4.0"
     semver "^7.5.2"
 
-"@react-native-community/slider@^4.4.3":
-  version "4.4.3"
-  resolved "https://registry.yarnpkg.com/@react-native-community/slider/-/slider-4.4.3.tgz#9b9dc639b88f5bfda72bd72a9dff55cbf9f777ed"
-  integrity sha512-WdjvGtqJfqcCiLwtbzie53Z/H6w6dIfRHhlW832D89ySAdE5DxLAsqRhDOG0eacuAxxEB+T9sGCkVMD0fa3aBg==
-
 "@react-native/assets-registry@^0.72.0":
   version "0.72.0"
   resolved "https://registry.yarnpkg.com/@react-native/assets-registry/-/assets-registry-0.72.0.tgz#c82a76a1d86ec0c3907be76f7faf97a32bbed05d"
@@ -6499,11 +6494,6 @@ rimraf@~2.6.2:
   integrity sha512-mwqeW5XsA2qAejG46gYdENaxXjx9onRNCfn7L0duuP4hCuTIi/QO7PDK07KJfp1d+izWPrzEJDcSqBa0OZQriA==
   dependencies:
     glob "^7.1.3"
-
-rn-vertical-slider@^3.1.1:
-  version "3.1.1"
-  resolved "https://registry.yarnpkg.com/rn-vertical-slider/-/rn-vertical-slider-3.1.1.tgz#cb3d668bf938880be3ecf52643990acf7f356fec"
-  integrity sha512-mB8DHrtgufoQgAZ7GYVl8J/Rx6yavpxTuhFtJ46TyLKgR1Wb2pOqvTeWNqXPGOnf+nAZW3g0o1OHU1ZmMLlt6g==
 
 run-parallel@^1.1.9:
   version "1.2.0"
