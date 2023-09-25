@@ -3,8 +3,8 @@ import React, {type FC} from 'react';
 
 interface ContainerProps extends ViewProps {}
 
-const Container: FC<ContainerProps> = ({children}) => {
-  return <View style={styles.container}>{children}</View>;
+const Container: FC<ContainerProps> = ({children, style}) => {
+  return <View style={[styles.container, style]}>{children}</View>;
 };
 
 export default Container;
