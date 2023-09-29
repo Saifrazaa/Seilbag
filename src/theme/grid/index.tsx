@@ -1,4 +1,4 @@
-import {FC} from 'react';
+import {FC, forwardRef} from 'react';
 import {View, ViewProps} from 'react-native';
 
 interface BoxProps extends ViewProps {
@@ -11,20 +11,22 @@ interface BoxProps extends ViewProps {
   end?: boolean;
   container?: boolean;
 }
-
-export const Box: FC<BoxProps> = ({
-  children,
-  row,
-  reversed,
-  centered,
-  justified,
-  justifiedEnd,
-  spaced,
-  end,
-  style,
-  container,
-  ...props
-}) => {
+export const Box = forwardRef<View, BoxProps>(function Box(
+  {
+    children,
+    row,
+    reversed,
+    centered,
+    justified,
+    justifiedEnd,
+    spaced,
+    end,
+    style,
+    container,
+    ...props
+  },
+  ref,
+) {
   return (
     <View
       style={[
@@ -52,4 +54,4 @@ export const Box: FC<BoxProps> = ({
       {children}
     </View>
   );
-};
+});

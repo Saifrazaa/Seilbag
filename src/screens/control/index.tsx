@@ -1,4 +1,4 @@
-import {StyleSheet, TouchableOpacity, ScrollView} from 'react-native';
+import {StyleSheet, TouchableOpacity} from 'react-native';
 import React, {type FC, useMemo} from 'react';
 
 import Layout from '@components/layout';
@@ -75,130 +75,120 @@ const Control: FC<ControlProps> = ({navigation}) => {
   return (
     <Layout>
       <Header />
-      <ScrollView>
-        <Box>
-          <Box style={styles.topPanel}>
-            <Box row centered spaced style={{width: '100%'}}>
-              <Box>
-                <BatteryIndicatorIcon
-                  width={ptp(255.76 * 0.4)}
-                  height={ptp(125.09 * 0.4)}
-                />
-                <Box style={styles.batteryPercentage}>
-                  {connected && (
-                    <BoldText color={Colors.dim} size={24}>
-                      100
-                    </BoldText>
-                  )}
-                </Box>
-              </Box>
-              <Box row centered>
+      <Box>
+        <Box style={styles.topPanel}>
+          <Box row centered spaced style={{width: '100%'}}>
+            <Box>
+              <BatteryIndicatorIcon
+                width={ptp(255.76 * 0.4)}
+                height={ptp(125.09 * 0.4)}
+              />
+              <Box style={styles.batteryPercentage}>
                 {connected && (
-                  <BoldText
-                    size={24}
-                    color={Colors.dim}
-                    style={{marginRight: ptp(6)}}>
-                    70
+                  <BoldText color={Colors.dim} size={24}>
+                    100
                   </BoldText>
                 )}
-                <IconButton onPress={toggleConnected}>
-                  <BrightnessIcon
-                    width={ptp(71.04 * 0.4)}
-                    height={ptp(71.04 * 0.4)}
-                  />
-                </IconButton>
               </Box>
             </Box>
-            <Box style={styles.indicator}>
-              <Box row>
-                <Box row style={{marginBottom: ptp(16)}}>
-                  {Array.from([1, 2, 3], (_, index) => {
-                    return (
-                      <Box
-                        key={index}
-                        style={[
-                          styles.rectangularItem,
-                          {
-                            marginHorizontal: index % 2 !== 0 ? ptp(5) : 0,
-                            backgroundColor: connected
-                              ? Colors.white
-                              : '#313449',
-                          },
-                        ]}
-                      />
-                    );
-                  })}
-                </Box>
-                <Box
-                  style={[
-                    styles.rectangularItem,
-                    {
-                      marginLeft: ptp(72),
-                      backgroundColor: connected ? '#0068FF' : '#313449',
-                    },
-                  ]}
+            <Box row centered>
+              {connected && (
+                <BoldText
+                  size={24}
+                  color={Colors.dim}
+                  style={{marginRight: ptp(6)}}>
+                  70
+                </BoldText>
+              )}
+              <IconButton onPress={toggleConnected}>
+                <BrightnessIcon
+                  width={ptp(71.04 * 0.4)}
+                  height={ptp(71.04 * 0.4)}
                 />
-              </Box>
-              <Box
-                row
-                spaced
-                style={{width: '100%', paddingHorizontal: ptp(10)}}>
-                {Array.from(
-                  [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
-                  (_, index) => {
-                    return (
-                      <Box
-                        key={index}
-                        style={[
-                          styles.indicatorItem,
-                          {
-                            backgroundColor: connected
-                              ? `rgba(255, 255, 255, ${_ * 0.1})`
-                              : '#313449',
-                          },
-                        ]}
-                      />
-                    );
-                  },
-                )}
-              </Box>
+              </IconButton>
             </Box>
           </Box>
-          <Box row style={styles.controlContainer}>
-            {CONTROLS.map((control, index) => (
-              <Box
-                key={index}
-                style={[
-                  styles.controlBox,
-                  {
-                    borderLeftWidth: index % 2 === 0 ? 0 : 1,
-                    borderRightWidth: 0,
-                    borderBottomWidth: 0,
-                  },
-                ]}>
-                <TouchableOpacity
-                  onPress={control.onPress}
-                  style={{width: '100%', height: '100%'}}
-                  disabled={!connected}>
-                  <Box
-                    centered
-                    justified
-                    style={{width: '100%', height: '100%'}}>
-                    {connected ? (
-                      <control.icon.on width={ptp(56)} height={ptp(56)} />
-                    ) : (
-                      <control.icon.off width={ptp(56)} height={ptp(56)} />
-                    )}
-                    <RegularText size={18} style={{marginTop: ptp(16)}}>
-                      {control.label}
-                    </RegularText>
-                  </Box>
-                </TouchableOpacity>
+          <Box style={styles.indicator}>
+            <Box row>
+              <Box row style={{marginBottom: ptp(16)}}>
+                {Array.from([1, 2, 3], (_, index) => {
+                  return (
+                    <Box
+                      key={index}
+                      style={[
+                        styles.rectangularItem,
+                        {
+                          marginHorizontal: index % 2 !== 0 ? ptp(5) : 0,
+                          backgroundColor: connected ? Colors.white : '#313449',
+                        },
+                      ]}
+                    />
+                  );
+                })}
               </Box>
-            ))}
+              <Box
+                style={[
+                  styles.rectangularItem,
+                  {
+                    marginLeft: ptp(72),
+                    backgroundColor: connected ? '#0068FF' : '#313449',
+                  },
+                ]}
+              />
+            </Box>
+            <Box row spaced style={{width: '100%', paddingHorizontal: ptp(10)}}>
+              {Array.from(
+                [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+                (_, index) => {
+                  return (
+                    <Box
+                      key={index}
+                      style={[
+                        styles.indicatorItem,
+                        {
+                          backgroundColor: connected
+                            ? `rgba(255, 255, 255, ${_ * 0.1})`
+                            : '#313449',
+                        },
+                      ]}
+                    />
+                  );
+                },
+              )}
+            </Box>
           </Box>
         </Box>
-      </ScrollView>
+        <Box row style={styles.controlContainer}>
+          {CONTROLS.map((control, index) => (
+            <Box
+              key={index}
+              style={[
+                styles.controlBox,
+                {
+                  borderLeftWidth: index % 2 === 0 ? 0 : 1,
+                  borderRightWidth: 0,
+                  borderBottomWidth: 0,
+                },
+              ]}>
+              <TouchableOpacity
+                onPress={control.onPress}
+                style={{width: '100%', height: '100%'}}
+                disabled={!connected}>
+                <Box centered justified style={{width: '100%', height: '100%'}}>
+                  {connected ? (
+                    <control.icon.on width={ptp(56)} height={ptp(56)} />
+                  ) : (
+                    <control.icon.off width={ptp(56)} height={ptp(56)} />
+                  )}
+                  <RegularText size={18} style={{marginTop: ptp(16)}}>
+                    {control.label}
+                  </RegularText>
+                </Box>
+              </TouchableOpacity>
+            </Box>
+          ))}
+        </Box>
+      </Box>
     </Layout>
   );
 };
@@ -232,7 +222,7 @@ const styles = StyleSheet.create({
   },
   controlBox: {
     width: '50%',
-    height: ptp(200),
+    height: ptp(158),
     borderColor: Colors.fade,
     borderWidth: 1,
   },
