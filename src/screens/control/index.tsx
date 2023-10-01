@@ -26,6 +26,8 @@ import LeftRightWhiteIcon from '@assets/media/left-right-arrow-white.svg';
 import LampIcon from '@assets/media/lamp.svg';
 import LampWhiteIcon from '@assets/media/lamp-white.svg';
 import {ControlType} from '@utils/@types';
+import {SafeAreaProvider} from 'react-native-safe-area-context';
+import Devices from '@screens/devices';
 
 type ControlProps = HomeScreenProps<'control'>;
 
@@ -72,6 +74,8 @@ const Control: FC<ControlProps> = ({navigation}) => {
     [],
   );
 
+  console.log(connected);
+
   return (
     <Layout>
       <Header />
@@ -100,7 +104,7 @@ const Control: FC<ControlProps> = ({navigation}) => {
                   70
                 </BoldText>
               )}
-              <IconButton onPress={toggleConnected}>
+              <IconButton>
                 <BrightnessIcon
                   width={ptp(71.04 * 0.4)}
                   height={ptp(71.04 * 0.4)}
@@ -189,6 +193,16 @@ const Control: FC<ControlProps> = ({navigation}) => {
           ))}
         </Box>
       </Box>
+      <SafeAreaProvider
+        style={{
+          position: 'absolute',
+          top: 0,
+          width: '100%',
+        }}>
+        <Devices
+          handleConnection={(state: boolean) => toggleConnected(state)}
+        />
+      </SafeAreaProvider>
     </Layout>
   );
 };
