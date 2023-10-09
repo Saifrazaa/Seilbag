@@ -9,12 +9,14 @@ import {RegularText} from '@theme/typography';
 import PrimaryButton from '@components/buttons/primary-button';
 import {HomeScreenProps} from '@utils/@types';
 import {COLOR_ITEMS} from '@data/color-item';
+import {useTranslation} from 'react-i18next';
 
 type ColorChangeProps = HomeScreenProps<'color-change'>;
 
 const ColorChange: FC<ColorChangeProps> = ({navigation}) => {
   const insets = useSafeAreaInsets();
   const [selectedColor, setSelectedColor] = useState<number>(0);
+  const {t} = useTranslation();
 
   const handleSelectColor = (id: number) => () => {
     setSelectedColor(id);
@@ -32,7 +34,7 @@ const ColorChange: FC<ColorChangeProps> = ({navigation}) => {
       justifiedEnd>
       <View style={styles.contentContainer}>
         <Box style={styles.titleContainer}>
-          <RegularText size={16}>Color Change</RegularText>
+          <RegularText size={16}>{t('Color Change')}</RegularText>
         </Box>
         <Box row style={{flexWrap: 'wrap'}}>
           {COLOR_ITEMS.map((color, index) => {
@@ -56,7 +58,7 @@ const ColorChange: FC<ColorChangeProps> = ({navigation}) => {
                     />
                     <RegularText
                       style={{textTransform: 'uppercase', marginTop: ptp(12)}}>
-                      {color.name}
+                      {t(color.name.toUpperCase())}
                     </RegularText>
                   </Box>
                 </TouchableOpacity>
@@ -67,7 +69,7 @@ const ColorChange: FC<ColorChangeProps> = ({navigation}) => {
         <Box style={styles.footer} centered>
           <View style={{width: '60%'}}>
             <PrimaryButton onPress={() => navigation.goBack()}>
-              OK
+              {t('OK')}
             </PrimaryButton>
           </View>
         </Box>

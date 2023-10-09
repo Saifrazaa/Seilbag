@@ -28,11 +28,13 @@ import LampWhiteIcon from '@assets/media/lamp-white.svg';
 import {ControlType} from '@utils/@types';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
 import Devices from '@screens/devices';
+import {useTranslation} from 'react-i18next';
 
 type ControlProps = HomeScreenProps<'control'>;
 
 const Control: FC<ControlProps> = ({navigation}) => {
   const {connected, toggleConnected} = useUI();
+  const {t} = useTranslation();
 
   const CONTROLS: Array<ControlType> = useMemo(
     () => [
@@ -185,7 +187,7 @@ const Control: FC<ControlProps> = ({navigation}) => {
                     <control.icon.off width={ptp(56)} height={ptp(56)} />
                   )}
                   <RegularText size={18} style={{marginTop: ptp(16)}}>
-                    {control.label}
+                    {t(control.label)}
                   </RegularText>
                 </Box>
               </TouchableOpacity>

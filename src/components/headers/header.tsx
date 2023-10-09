@@ -16,10 +16,13 @@ import BluetoothCircleIcon from '@assets/media/bluetooth-circle.svg';
 import BluetoothCircleWhiteIcon from '@assets/media/bluetooth-circle-white.svg';
 import {Colors} from '@theme/values/colors';
 import {useUI} from '@contexts/ui.context';
+import {useTranslation} from 'react-i18next';
 
 const Header = () => {
   const navigation = useNavigation();
   const {connected} = useUI();
+  const {t} = useTranslation();
+
   return (
     <View style={styles.header}>
       <Box row centered>
@@ -41,7 +44,7 @@ const Header = () => {
                   <BluetoothCircleIcon width={ptp(24)} height={ptp(24)} />
                 )}
                 <RegularText size={18} style={{marginLeft: ptp(12)}}>
-                  Device Name
+                  {t('Device Name')}
                 </RegularText>
               </Box>
             </TouchableOpacity>

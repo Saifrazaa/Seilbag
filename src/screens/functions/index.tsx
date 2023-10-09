@@ -10,12 +10,14 @@ import PrimaryButton from '@components/buttons/primary-button';
 import {HomeScreenProps} from '@utils/@types';
 import {COLOR_ITEMS} from '@data/color-item';
 import {FUNCTIONS} from '@data/functions';
+import {useTranslation} from 'react-i18next';
 
 type FunctionsProps = HomeScreenProps<'functions'>;
 
 const Functions: FC<FunctionsProps> = ({navigation}) => {
   const insets = useSafeAreaInsets();
   const [selectedFunction, setSelectedFunction] = useState<number>(0);
+  const {t} = useTranslation();
 
   const handleSelectFunction = (id: number) => () => {
     setSelectedFunction(id);
@@ -33,7 +35,7 @@ const Functions: FC<FunctionsProps> = ({navigation}) => {
       justifiedEnd>
       <View style={styles.contentContainer}>
         <Box style={styles.titleContainer}>
-          <RegularText size={16}>Function</RegularText>
+          <RegularText size={16}>{t('Function')}</RegularText>
         </Box>
         <Box row style={{flexWrap: 'wrap'}}>
           {FUNCTIONS.map((led_function, index) => {
@@ -54,7 +56,7 @@ const Functions: FC<FunctionsProps> = ({navigation}) => {
                   <Box centered style={{width: '100%'}}>
                     <led_function.icon width={ptp(56)} height={ptp(56)} />
                     <RegularText style={{marginTop: ptp(4)}}>
-                      {led_function.name}
+                      {t(led_function.name)}
                     </RegularText>
                   </Box>
                 </TouchableOpacity>
@@ -65,7 +67,7 @@ const Functions: FC<FunctionsProps> = ({navigation}) => {
         <Box style={styles.footer} centered>
           <View style={{width: '60%'}}>
             <PrimaryButton onPress={() => navigation.goBack()}>
-              OK
+              {t('OK')}
             </PrimaryButton>
           </View>
         </Box>

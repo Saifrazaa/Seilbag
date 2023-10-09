@@ -16,6 +16,7 @@ import {RegularText} from '@theme/typography';
 import {AppDrawerParamList, DrawerItemType} from '@utils/@types';
 import {Colors} from '@theme/values/colors';
 import IconButton from './buttons/icon-button';
+import {useTranslation} from 'react-i18next';
 
 const DRAWER_ITEMS: Array<DrawerItemType> = [
   {
@@ -53,6 +54,8 @@ const routeMapper: Record<keyof AppDrawerParamList, string> = {
 };
 
 const CustomDrawer: FC<DrawerContentComponentProps> = ({navigation, state}) => {
+  const {t} = useTranslation();
+
   return (
     <Container style={styles.container}>
       <Box style={styles.drawerHeader} centered justified>
@@ -83,7 +86,7 @@ const CustomDrawer: FC<DrawerContentComponentProps> = ({navigation, state}) => {
                   <params.icon width={ptp(28)} height={ptp(28)} />
                   <Box style={{flex: 1}} centered>
                     <RegularText size={18}>
-                      {routeMapper[route.name]}
+                      {t(routeMapper[route.name])}
                     </RegularText>
                   </Box>
                 </Box>

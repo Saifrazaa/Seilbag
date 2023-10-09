@@ -1,6 +1,7 @@
 import 'react-native-gesture-handler';
-import {StatusBar} from 'react-native';
 import React from 'react';
+import {StatusBar} from 'react-native';
+import '@utils/i18n';
 import {NavigationContainer} from '@react-navigation/native';
 import Router from '@navigation/index';
 import {Colors} from '@theme/values/colors';

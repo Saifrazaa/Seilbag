@@ -9,6 +9,7 @@ import Container from '../container';
 import {RegularText} from '@theme/typography';
 import {Colors} from '@theme/values/colors';
 import UndoIcon from '@assets/media/undo.svg';
+import {useTranslation} from 'react-i18next';
 
 interface DirectionHeaderProps {
   isEnabled: boolean;
@@ -19,6 +20,8 @@ const DirectionHeader: FC<DirectionHeaderProps> = ({
   isEnabled,
   toggleSwitch,
 }) => {
+  const {t} = useTranslation();
+
   return (
     <View style={styles.header}>
       <Box row centered>
@@ -28,7 +31,7 @@ const DirectionHeader: FC<DirectionHeaderProps> = ({
         <Container>
           <Box centered>
             <Box row centered>
-              <RegularText>Front</RegularText>
+              <RegularText>{t('Front')}</RegularText>
               <Switch
                 trackColor={{false: '#5D637F', true: '#5D637F'}}
                 thumbColor={isEnabled ? Colors.white : Colors.white}
@@ -37,7 +40,7 @@ const DirectionHeader: FC<DirectionHeaderProps> = ({
                 value={isEnabled}
                 style={{marginHorizontal: ptp(8)}}
               />
-              <RegularText>Back</RegularText>
+              <RegularText>{t('Back')}</RegularText>
             </Box>
           </Box>
         </Container>

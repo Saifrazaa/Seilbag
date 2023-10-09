@@ -17,6 +17,7 @@ import SettingIcon from '@assets/media/gear.svg';
 import PrimaryButton from '@components/buttons/primary-button';
 import BleManager from 'react-native-ble-manager';
 import base64 from 'base-64';
+import {useTranslation} from 'react-i18next';
 
 const BleManagerModule = NativeModules.BleManager;
 const bleManagerEmitter = new NativeEventEmitter(BleManagerModule);
@@ -32,6 +33,7 @@ const Devices = ({
   const [pairedDevices, setPairedDevice] = useState<any>();
   const [connectedDevice, setConnectedDevice] = useState(null);
   const [modalOpen, setModalOpen] = useState(true);
+  const {t} = useTranslation();
 
   const serviceUUI = '6E400001-B5A3-F393-E0A9-E50E24DCCA9E';
   const characteristicsUUI = '6E400003-B5A3-F393-E0A9-E50E24DCCA9E';
@@ -116,15 +118,15 @@ const Devices = ({
         {!showConnected ? (
           <>
             <RegularText size={16} color={Colors.darktext}>
-              Detect SeilBag Device
+              {t('Detect SeilBag Device')}
             </RegularText>
             <RegularText size={16} color={Colors.darktext}>
-              please select Device
+              {t('please select Device')}
             </RegularText>
             <ScrollView>
               <Box row end>
                 <RegularText style={{marginTop: ptp(24)}}>
-                  Paired Device
+                  {t('Paired Device')}
                 </RegularText>
                 <View
                   style={{
@@ -157,7 +159,7 @@ const Devices = ({
               ))}
               <Box row end>
                 <RegularText style={{marginTop: ptp(24)}}>
-                  New Device
+                  {t('New Device')}
                 </RegularText>
                 <View
                   style={{
@@ -189,18 +191,18 @@ const Devices = ({
             </ScrollView>
             <View style={{paddingHorizontal: ptp(10)}}>
               <PrimaryButton onPress={() => setModalOpen(false)}>
-                OK
+                {t('OK')}
               </PrimaryButton>
             </View>
           </>
         ) : (
           <>
             <RegularText size={16} color={Colors.darktext}>
-              Already Connected SeilBag Device.
+              {t('Already Connected')} SeilBag Device
             </RegularText>
             <Box centered style={styles.centeredHeading}>
               <RegularText size={16} style={{marginTop: ptp(24)}}>
-                Connected Device
+                {t('Connected Device')}
               </RegularText>
             </Box>
             <Box centered style={styles.centeredHeading}>
@@ -210,12 +212,12 @@ const Devices = ({
             </Box>
 
             <View style={{paddingHorizontal: ptp(6), paddingVertical: ptp(12)}}>
-              <PrimaryButton outlined>Device Name Change</PrimaryButton>
+              <PrimaryButton outlined>{t('Device Name Change')}</PrimaryButton>
               <PrimaryButton outlined style={{marginVertical: ptp(16)}}>
-                Delete Device
+                {t('Delete Device')}
               </PrimaryButton>
               <PrimaryButton onPress={() => setModalOpen(false)}>
-                OK
+                {t('OK')}
               </PrimaryButton>
             </View>
           </>

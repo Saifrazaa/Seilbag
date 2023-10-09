@@ -10,10 +10,13 @@ import {RegularText} from '@theme/typography';
 import PrimaryButton from '@components/buttons/primary-button';
 import {HomeScreenProps} from '@utils/@types';
 import VerticalSlider3 from '@components/vertical-slider-3.0';
+import {useTranslation} from 'react-i18next';
 
 type BrightnessProps = HomeScreenProps<'brightness'>;
 
 const Brightness: FC<BrightnessProps> = ({navigation}) => {
+  const {t} = useTranslation();
+
   const insets = useSafeAreaInsets();
 
   return (
@@ -28,7 +31,7 @@ const Brightness: FC<BrightnessProps> = ({navigation}) => {
       justifiedEnd>
       <View style={styles.contentContainer}>
         <Box style={styles.titleContainer}>
-          <RegularText size={16}>Brightness</RegularText>
+          <RegularText size={16}>{t('Brightness')}</RegularText>
         </Box>
         <Box centered style={styles.sliderContainer}>
           <VerticalSlider3 />
@@ -36,7 +39,7 @@ const Brightness: FC<BrightnessProps> = ({navigation}) => {
         <Box style={styles.footer} centered>
           <View style={{width: '60%'}}>
             <PrimaryButton onPress={() => navigation.goBack()}>
-              OK
+              {t('OK')}
             </PrimaryButton>
           </View>
         </Box>
